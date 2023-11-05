@@ -1,4 +1,4 @@
-@shopping
+@shopping @regression
 Feature: Shopping Cart Functionality
 
   Scenario Outline: Validate shopping cart
