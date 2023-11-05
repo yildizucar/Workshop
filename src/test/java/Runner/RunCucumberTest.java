@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        tags =  "@cucumber and not @ignore",
+        tags = "@cucumber and not @ignore",
         features = {"src/test/resources/Features"},
         glue = {"StepDefinitions"},
         plugin = {
@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt",
         },
         monochrome = true,
-        dryRun = false,
+        dryRun = true,
         publish = false
 )
 public class RunCucumberTest {

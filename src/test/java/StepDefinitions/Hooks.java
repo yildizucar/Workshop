@@ -12,7 +12,7 @@ import java.time.Duration;
 
 public class Hooks extends CoreObjects {
 
-    @Before(value="not @hookless")
+    @Before(value = "not @hookless")
     public void initializeDriver() {
         driver = Driver.getDriver();
         driver.manage().window().maximize();
@@ -20,7 +20,7 @@ public class Hooks extends CoreObjects {
         initObjects();
     }
 
-    @After(value="not @hookless")
+    @After(value = "not @hookless")
     public void tearDown() {
         Driver.closeDriver();
     }

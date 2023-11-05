@@ -10,7 +10,7 @@ Feature: Example of simple Pojo usage
 
     Examples:
       | start | eat | end |
-      |    12 |   5 |    7 |
-      |    20 |   5 |   15 |
-      |    23 |   3 |   20 |
-      |    15 |  15 |    0 |
+      | 12    | 5   | 7   |
+      | 20    | 5   | 15  |
+      | 23    | 3   | 20  |
+      | 15    | 15  | 0   |

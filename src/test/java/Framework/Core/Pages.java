@@ -1,6 +1,9 @@
 package Framework.Core;
 
-import Pages.*;
+import Pages.ConfirmationPage;
+import Pages.LoginPage;
+import Pages.ProductsPage;
+import Pages.ShoppingCartPage;
 
 public class Pages {
     private LoginPage loginPage;
