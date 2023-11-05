@@ -34,11 +34,13 @@ public class SauceStepDefs extends CoreObjects {
     @When("user login as {string}")
     @Given("I login as {string}")
     public void i_login_as(String username) {
+        pages.loginPage().openLoginPage();
         pages.loginPage().login(username);
     }
 
     @Given("I login")
     public void i_login() {
+        pages.loginPage().openLoginPage();
         pages.loginPage().login();
     }
 
