@@ -11,6 +11,6 @@ public class D04_StringFormat {
 
         String formattedMessage = String.format(message, name);
         System.out.println(formattedMessage);
-        
+
     }
 }

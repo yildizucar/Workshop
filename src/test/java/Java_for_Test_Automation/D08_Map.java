@@ -22,23 +22,29 @@ public class D08_Map {
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
         Map<String, String> map1 = new HashMap<>();
-        map1.put("username", "user777"); map1.put("password", "pass777"); map1.put("state", "NY");
+        map1.put("username", "user777");
+        map1.put("password", "pass777");
+        map1.put("state", "NY");
 
         Map<String, String> map2 = new HashMap<>();
-        map2.put("username", "user999"); map2.put("password", "pass999"); map2.put("state", "CA");
+        map2.put("username", "user999");
+        map2.put("password", "pass999");
+        map2.put("state", "CA");
 
-        testData.add(map); testData.add(map1); testData.add(map2);
+        testData.add(map);
+        testData.add(map1);
+        testData.add(map2);
         System.out.println(testData);
 
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        System.out.println(getStateOfUser("user777") );
-        
+        System.out.println(getStateOfUser("user777"));
+
     }
 
     public static String getStateOfUser(String user) {
-        for(Map<String, String> each : testData){
-            if(each.get("username").contentEquals(user)){
+        for (Map<String, String> each : testData) {
+            if (each.get("username").contentEquals(user)) {
                 return each.get("state");
             }
         }

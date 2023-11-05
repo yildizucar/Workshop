@@ -11,11 +11,11 @@ public class D02_ifElse {
 
     private static void clickButton(String buttonName) {
 
-        if(buttonName.equalsIgnoreCase("Close")){
+        if (buttonName.equalsIgnoreCase("Close")) {
             // click close button element
-        }else if(buttonName.contentEquals("Next")){
+        } else if (buttonName.contentEquals("Next")) {
             // click next button element
-        }else{
+        } else {
             System.out.printf("%s Button name not defined", buttonName);
             System.out.println();
             System.out.printf("\"%s\" Button name not defined", buttonName);

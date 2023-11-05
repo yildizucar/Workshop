@@ -24,7 +24,7 @@ public class D07_List_2 {
 
         List<String> strings = Arrays.asList("apple", "banana", "cherry", "date");
         System.out.println(isSorted(strings));
-        Assertions.assertEquals( "true", isSorted(strings));
+        Assertions.assertEquals("true", isSorted(strings));
 
     }
 

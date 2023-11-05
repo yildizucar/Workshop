@@ -14,7 +14,7 @@ public class D06_forEach extends CoreObjects {
         List<String> cities = Arrays.asList("New York", "Dallas", "Miami", "Istanbul");
         String str = "";
 
-        for(String each : cities){
+        for (String each : cities) {
             System.out.println(each);
             str += each + " ";
         }
@@ -22,15 +22,15 @@ public class D06_forEach extends CoreObjects {
         System.out.println(str.trim());
 
         List<WebElement> buttons = driver.findElements(By.tagName("button"));
-        for(WebElement each : buttons){
-            if(each.getText().contentEquals("Next")){
+        for (WebElement each : buttons) {
+            if (each.getText().contentEquals("Next")) {
                 each.click();
             }
         }
 
         List<WebElement> options = driver.findElements(By.id("dropdown"));
         List<String> dropdownOptions = new ArrayList<>();
-        for(WebElement each : buttons){
+        for (WebElement each : buttons) {
             dropdownOptions.add(each.getText());
         }
     }
