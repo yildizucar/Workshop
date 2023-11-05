@@ -24,6 +24,7 @@ public class D05_StringManipulations {
         System.out.println(str.split("Zone")[0]);       // Cyber
         //System.out.println(str.split("Zone")[1]);           // Index 1 out of bounds for length 1
 
+
     }
 
 }

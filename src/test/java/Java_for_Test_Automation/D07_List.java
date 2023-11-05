@@ -6,6 +6,7 @@ import java.util.List;
 public class D07_List {
     public static void main(String[] args) {
         List<String> expectedColumns = Arrays.asList("First Name", "Last Name", "Age", "Address");
+
         List<String> actualColumns = Arrays.asList("First Name", "Last Name", "Age", "Address");
         List<String> actualColumns2 = Arrays.asList("First Name", "Middle Name", "Last Name", "Age", "Address");
 
