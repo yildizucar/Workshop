@@ -1,11 +1,8 @@
 package Framework.Core;
 
-import Pages.ConfirmationPage;
-import Pages.LoginPage;
-import Pages.ProductsPage;
-import Pages.ShoppingCartPage;
+import Pages.*;
 
-public class Pages {
+public class Pages extends BasePage {
     private LoginPage loginPage;
     private ProductsPage productsPage;
     private ShoppingCartPage shoppingCartPage;

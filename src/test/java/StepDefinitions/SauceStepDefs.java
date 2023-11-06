@@ -46,6 +46,7 @@ public class SauceStepDefs extends CoreObjects {
 
     @When("user login to the website")
     public void user_login_to_the_website(DataTable dataTable) {
+        pages.loginPage().openLoginPage();
         pages.loginPage().login(dataTable);
     }
 
@@ -78,8 +79,7 @@ public class SauceStepDefs extends CoreObjects {
 
     @Then("verify page header is {string}")
     public void verify_page_header_is(String pageHeader) {
-        pages.productsPage().verifyPageHeader("...");
-        assertEquals(pageHeader, pages.productsPage().getPageHeader());
+        assertEquals(pageHeader, pages.getPageHeader());
     }
 
     @Then("verify the {string} in login page")
@@ -114,24 +114,10 @@ public class SauceStepDefs extends CoreObjects {
         }
     }
 
-//    @And("user add {string} to shopping cart")
-//    public void userAddToShoppingCart(String productName) {
-//        pages.productsPage().addItemToCart(productName);
-//    }
-//
-//    @When("user removes {string} from shopping cart")
-//    public void userRemovesFromShoppingCart(String productName) {
-//
-//    }
-
     @Then("verify shopping cart contains {int} item")
     public void verifyShoppingCartContainsItem(int expectedCount) {
         assertEquals(expectedCount, pages.productsPage().getShoppingCartItemCount());
     }
-
-
-
-
 
 
 }
