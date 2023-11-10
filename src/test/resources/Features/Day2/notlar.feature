@@ -22,7 +22,7 @@ Feature: Options
   Scenario: Login With Valid Credentials
     Given I login
 
-  @login4
+  @login4 @web
   Scenario: Login With Valid Credentials
     Given user is on landing page
     When user login to the website
