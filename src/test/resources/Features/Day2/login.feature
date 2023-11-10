@@ -3,7 +3,6 @@ Feature: Login functionality of SauceDemo.com
 
   As a new user, I should be able to login with valid credentials
 
-  @demo
   Scenario: Login With Valid Credentials
     Given user login to the website
       | username | standard_user |
