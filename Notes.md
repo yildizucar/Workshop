@@ -1,4 +1,0 @@
-
-
-
-## SON DAKIKA DEGISIKLIGI

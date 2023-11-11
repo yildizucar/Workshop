@@ -29,8 +29,6 @@ Feature: Shopping Cart Functionality
 
 
 
-
-
-  #    When user sort the items by "Price (low to high)"
+#    When user sort the items by "Price (low to high)"
 #    Then verify that the item with lowest price is displayed first
 #    And verify that items are sorted by "price"
