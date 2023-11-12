@@ -173,6 +173,6 @@ public class SauceStepDefs extends CoreObjects {
 
     @Then("verify that the added items are present in the cart")
     public void verifyThatTheAddedItemsArePresentInTheCart(List<String> expected) {
-        assertEquals(expected, pages.shoppingCartPage().getItemsInFromShoppingCart());
+        assertEquals(expected, pages.shoppingCartPage().getItemsFromShoppingCart());
     }
 }

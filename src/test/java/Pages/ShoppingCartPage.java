@@ -8,9 +8,10 @@ import java.util.stream.Collectors;
 
 public class ShoppingCartPage extends BasePage {
 
-    public List<String> getItemsInFromShoppingCart() {
-        List<WebElement> items = driver.findElements(By.cssSelector(".inventory_item_name"));
-        List<String> names =items.stream().map(WebElement::getText).collect(Collectors.toList());
-        return names;
+    private static final By addedItems = By.cssSelector(".inventory_item_name");
+
+    public List<String> getItemsFromShoppingCart() {
+        List<WebElement> items = driver.findElements(addedItems);
+        return items.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 }
