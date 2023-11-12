@@ -203,4 +203,8 @@ public class ProductsPage extends BasePage {
         Collections.sort(copy);
         return list.equals(copy);
     }
+
+    public void navigateToShoppingCart() {
+        driver.findElement(shoppingCart).click();
+    }
 }

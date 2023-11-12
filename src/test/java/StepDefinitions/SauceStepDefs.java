@@ -165,4 +165,14 @@ public class SauceStepDefs extends CoreObjects {
     public void waitForSecondsForDemo(int second) {
         pages.waitFor(second);
     }
+
+    @And("user navigates to the shopping cart")
+    public void userNavigatesToTheShoppingCart() {
+        pages.productsPage().navigateToShoppingCart();
+    }
+
+    @Then("verify that the added items are present in the cart")
+    public void verifyThatTheAddedItemsArePresentInTheCart(List<String> expected) {
+        assertEquals(expected, pages.shoppingCartPage().getItemsInFromShoppingCart());
+    }
 }
