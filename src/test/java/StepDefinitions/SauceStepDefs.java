@@ -12,6 +12,7 @@ import io.cucumber.java.en.When;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SauceStepDefs extends CoreObjects {
 
@@ -175,4 +176,40 @@ public class SauceStepDefs extends CoreObjects {
     public void verifyThatTheAddedItemsArePresentInTheCart(List<String> expected) {
         assertEquals(expected, pages.shoppingCartPage().getItemsFromShoppingCart());
     }
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    @And("clicks on {string} button 2")
+    public void clicksOnButton2(String button) {
+        switch (button.toLowerCase()) {
+            case "checkout":
+                pages.shoppingCartPage().clickOnCheckoutButton();
+                break;
+            case "continue":
+                pages.shoppingCartPage().clickOnContinueButton();
+                break;
+            case "finish":
+                pages.shoppingCartPage().clickOnFinishButton();
+                break;
+        }
+    }
+
+    // or
+
+    @And("clicks on {string} button")
+    public void clicksOnButton(String buttonName) {
+        pages.shoppingCartPage().clickOnButton(buttonName);
+    }
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    @And("user enters checkout information")
+    public void userEntersCheckoutInformation(DataTable data) {
+        pages.shoppingCartPage().fillCostomerInformation(data);
+    }
+
+    @Then("verify user sees the {string} message")
+    public void verifyUserSeesTheMessage(String text) {
+        assertTrue(pages.confirmationPage().getConfirmationMessage().contentEquals(text));
+    }
+
 }

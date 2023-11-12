@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        tags = "@day3 and not @ignore",
+        tags = "@day4 and not @ignore",
         features = {"src/test/resources/Features"},
         glue = {"StepDefinitions"},
         plugin = {
@@ -17,7 +17,7 @@ import org.junit.runner.RunWith;
         },
         monochrome = true,
         dryRun = false,
-        publish = false
+        publish = true
 )
 public class RunCucumberTest {
 }
