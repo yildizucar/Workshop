@@ -136,8 +136,8 @@ public class ProductsPage extends BasePage {
     public List<String> getHamburgerMenu() {
         pages.productsPage().openHamburgerMenu();
         List<WebElement> menu = driver.findElements(By.cssSelector(".menu-item"));
-        List<String> actualMenu = menu.stream().map(WebElement::getText).collect(Collectors.toList());
-        return actualMenu;
+        List<String> subMenus = menu.stream().map(WebElement::getText).collect(Collectors.toList());
+        return subMenus;
     }
 
     public void openHamburgerMenu() {
