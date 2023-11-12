@@ -124,15 +124,29 @@ public class SauceStepDefs extends CoreObjects {
 
     @Then("verify {int} product are listed on Products Page")
     public void verifyProductAreListedOnProductsPage(int count) {
-        assertEquals(pages.productsPage().getCountOfItems(), count);
-        assertEquals(pages.productsPage().getItems().size(), count);
-        // System.out.println(pages.productsPage().getItems());
+        assertEquals(pages.productsPage().getCountOfProducts(), count);
+        // or
+        assertEquals(pages.productsPage().getProducts().size(), count);
     }
 
     @Then("^verify that sort dropdown has this options$")
     public void verifySortDropdownHasThisOptions(List<String> content) {
         pages.productsPage().verifySortDropdownOptions(content);
+        // or
+        assertEquals(content, pages.productsPage().getSortDropdownOptions());
     }
+
+    @And("verify hamburger menu contains")
+    public void verifyHamburgerMenuContains(List<String> expectedMenu) {
+        assertEquals(expectedMenu, pages.productsPage().getHamburgerMenu());
+    }
+
+    @When("user sort the items by {string}")
+    public void userSortTheItemsBy(String option) {
+        pages.productsPage().sortProducts(option);
+    }
+
+    // ~~~~~~~~~~~~~~~~~~ DAY 4 ~~~~~~~~~~~~~~~~~~~~~~
 
 
 

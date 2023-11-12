@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,6 +18,9 @@ public class ProductsPage extends BasePage {
 
     private static final By pageHeader = By.cssSelector(".title");
     private static final By shoppincCardCount = By.xpath("//span[@class='shopping_cart_badge']");
+    private static final By shoppingCart = By.xpath("//a[@class='shopping_cart_link']");
+    private static final By sortProductsDropdown = By.className("product_sort_container");
+    private static final By productNames = By.cssSelector(".inventory_item_name");
     private static final String product_template = "//div[text()='%s']/../../following-sibling::div/button";
 
 
@@ -64,7 +66,8 @@ public class ProductsPage extends BasePage {
         for (String each : items) {
             addItemToCart(each);
         }
-        //items.forEach(this::addItemToCart);
+        // or
+        // items.forEach(this::addItemToCart);
     }
 
     public int getShoppingCartItemCount() {
@@ -72,8 +75,15 @@ public class ProductsPage extends BasePage {
         return Integer.parseInt(count);
     }
 
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ DAY 3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-//    public List<String> getItems() {
+    public int getCountOfProducts() {
+        // List<WebElement> items = driver.findElements(By.cssSelector(".inventory_item_name"));
+        // return items.size();
+        return driver.findElements(productNames).size();
+    }
+
+//    public List<String> getProducts() {
 //        List<WebElement> items = driver.findElements(By.cssSelector(".inventory_item_name "));
 //        List<String> productNames = new ArrayList<>();
 //        for(WebElement each : items){
@@ -82,14 +92,11 @@ public class ProductsPage extends BasePage {
 //        return productNames;
 //    }
 
-    public List<String> getItems() {
+    // or (short way)
+
+    public List<String> getProducts() {
         List<WebElement> items = driver.findElements(By.cssSelector(".inventory_item_name "));
         return items.stream().map(WebElement::getText).collect(Collectors.toList());
-    }
-
-    public int getCountOfItems() {
-        List<WebElement> items = driver.findElements(By.cssSelector(".inventory_item_name "));
-        return items.size();
     }
 
 //    public void verifySortDropDownOptions(List<String> options) {
@@ -103,14 +110,41 @@ public class ProductsPage extends BasePage {
 //        assertEquals(options,text );
 //    }
 
+    // or (short way)
+
     public void verifySortDropdownOptions(List<String> content) {
-        WebElement dropdown = driver.findElement(By.className("product_sort_container"));
+        WebElement dropdown = driver.findElement(sortProductsDropdown);
         Select select = new Select(dropdown);
-        List<WebElement> options = select.getOptions();
-        List<String> texts = options.stream().map(WebElement::getText).collect(Collectors.toList());
-        // System.out.println(texts);
-        assertEquals(texts, content);
+        List<WebElement> dropdownOptions = select.getOptions();
+        List<String> options = dropdownOptions.stream().map(WebElement::getText).collect(Collectors.toList());
+        assertEquals(options, content);
     }
+
+    public List<String> getSortDropdownOptions() {
+        WebElement dropdown = driver.findElement(sortProductsDropdown);
+        Select select = new Select(dropdown);
+        List<WebElement> dropdownOptions = select.getOptions();
+        return dropdownOptions.stream().map(WebElement::getText).collect(Collectors.toList());
+    }
+
+    public void sortProducts(String option) {
+        // supported parameters: Price (high to low)|Price (low to high)|Name (A to Z)|Name (Z to A)
+        Select select = new Select(driver.findElement(sortProductsDropdown));
+        select.selectByVisibleText(option);
+    }
+
+    public List<String> getHamburgerMenu() {
+        pages.productsPage().openHamburgerMenu();
+        List<WebElement> menu = driver.findElements(By.cssSelector(".menu-item"));
+        List<String> actualMenu = menu.stream().map(WebElement::getText).collect(Collectors.toList());
+        return actualMenu;
+    }
+
+    public void openHamburgerMenu() {
+        clickElement(menuButton);
+    }
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ DAY 4 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 }
 
 
