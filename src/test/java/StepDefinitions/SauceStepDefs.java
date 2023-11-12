@@ -160,9 +160,9 @@ public class SauceStepDefs extends CoreObjects {
     public void verifyThatItemsAreSortedBy(String option) {
         pages.productsPage().verifyProductsSortedBy(option);
     }
-//
-//    @And("wait for {int} seconds")
-//    public void waitForSeconds(int seconds) throws InterruptedException {
-//        Thread.sleep(seconds*1000);
-//    }
+
+    @And("wait for {int} seconds \\(for demo)")
+    public void waitForSecondsForDemo(int second) {
+        pages.waitFor(second);
+    }
 }

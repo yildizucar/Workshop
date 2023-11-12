@@ -15,7 +15,7 @@ public class CommonMethods extends CoreObjects {
      *
      * @param seconds
      */
-    public static void wait(int seconds) {
+    public void waitFor(int seconds) {
         try {
             Thread.sleep(seconds * 1000L);
         } catch (InterruptedException e) {
