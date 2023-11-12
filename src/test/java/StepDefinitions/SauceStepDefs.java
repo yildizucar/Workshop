@@ -138,6 +138,7 @@ public class SauceStepDefs extends CoreObjects {
 
     @And("verify hamburger menu contains")
     public void verifyHamburgerMenuContains(List<String> expectedMenu) {
+        pages.productsPage().openHamburgerMenu();
         assertEquals(expectedMenu, pages.productsPage().getHamburgerMenu());
     }
 
@@ -146,8 +147,22 @@ public class SauceStepDefs extends CoreObjects {
         pages.productsPage().sortProducts(option);
     }
 
+
+
     // ~~~~~~~~~~~~~~~~~~ DAY 4 ~~~~~~~~~~~~~~~~~~~~~~
 
+    @And("verify hamburger menu contains following submenus")
+    public void verifyHamburgerMenuContainsFollowingSubmenus(String submenus) {
+        assertEquals(submenus, pages.productsPage().getHamburgerMenu2());
+    }
 
-
+    @And("verify that items are sorted by {string}")
+    public void verifyThatItemsAreSortedBy(String option) {
+        pages.productsPage().verifyProductsSortedBy(option);
+    }
+//
+//    @And("wait for {int} seconds")
+//    public void waitForSeconds(int seconds) throws InterruptedException {
+//        Thread.sleep(seconds*1000);
+//    }
 }

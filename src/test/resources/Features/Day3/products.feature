@@ -1,3 +1,4 @@
+@day3
 Feature: Shopping Cart Functionality
 
   Background:
