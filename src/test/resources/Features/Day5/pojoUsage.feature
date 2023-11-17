@@ -12,6 +12,7 @@ Feature: Shopping Cart Functionality
       | lastName  | Dogan |
       | zipCode   | 33433 |
     And clicks on "Continue" button
+    And verify customer information displayed in X page
     And clicks on "Finish" button
     Then verify user sees the "<warning>" message
 

@@ -25,3 +25,5 @@ Feature: Shopping Cart Functionality
     Then verify that items are sorted by "name"
     When user sort the items by "Price (low to high)"
     And verify that items are sorted by "price"
+
+

@@ -20,7 +20,6 @@ Feature: Shopping Cart Functionality
       | Sauce Labs Bolt T-Shirt | Sauce Labs Backpack | Sauce Labs Bike Light |
 
 
-
   Scenario Outline: Validate Checkout functionality
     When user add following items to cart
       | <item1> |

@@ -42,7 +42,7 @@ public class ShoppingCartPage extends BasePage {
         wait.until(ExpectedConditions.elementToBeClickable(By.id(button.toLowerCase()))).click();
     }
 
-    public void fillCostomerInformation(DataTable dataTable) {
+    public void fillCustomerInformation(DataTable dataTable) {
         Map<String, String> info = dataTable.asMap();
         String firstName = info.get("firstName");
         String lastName = info.get("lastName");
@@ -58,9 +58,15 @@ public class ShoppingCartPage extends BasePage {
             zipCode = faker.address().zipCode();
         }
 
+        fillCustomerInformation(firstName, lastName, zipCode);
+        // driver.findElement(firstNameField).sendKeys(firstName);
+        // driver.findElement(lastNameField).sendKeys(lastName);
+        // driver.findElement(zipCodeField).sendKeys(zipCode);
+    }
+
+    public void fillCustomerInformation(String firstName, String lastName, String zipCode) {
         driver.findElement(firstNameField).sendKeys(firstName);
         driver.findElement(lastNameField).sendKeys(lastName);
         driver.findElement(zipCodeField).sendKeys(zipCode);
     }
-
 }

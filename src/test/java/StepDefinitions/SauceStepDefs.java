@@ -1,6 +1,8 @@
 package StepDefinitions;
 
 import Framework.Core.CoreObjects;
+import Framework.Pojo.Customer;
+import Framework.Pojo.User;
 import Framework.Utilities.ConfigurationReader;
 import Pages.LoginPage;
 import io.cucumber.datatable.DataTable;
@@ -8,6 +10,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.java.ja.且つ;
+import org.openqa.selenium.By;
 
 import java.util.List;
 
@@ -15,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class SauceStepDefs extends CoreObjects {
-
+    Customer customer;
 
     @Given("user navigates to {string}")
     public void user_navigates_to(String url) {
@@ -204,7 +208,7 @@ public class SauceStepDefs extends CoreObjects {
 
     @And("user enters checkout information")
     public void userEntersCheckoutInformation(DataTable data) {
-        pages.shoppingCartPage().fillCostomerInformation(data);
+        pages.shoppingCartPage().fillCustomerInformation(data);
     }
 
     @Then("verify user sees the {string} message")
@@ -212,8 +216,26 @@ public class SauceStepDefs extends CoreObjects {
         assertTrue(pages.confirmationPage().getConfirmationMessage().contentEquals(text));
     }
 
+
     // ~~~~~~~~~~~~~~~~~~ DAY 5 ~~~~~~~~~~~~~~~~~~~~~~
 
+    @Given("user login to page")
+    public void userLoginToPage(DataTable dataTable) {
+        User user = new User(dataTable);
+        pages.loginPage().openLoginPage();
+        pages.loginPage().login(user.getUsername(), user.getPassword());
+    }
 
+    @And("user enters checkout information \\(pojo)")
+    public void userEntersCheckoutInformationPojo(DataTable dataTable) {
+        customer = new Customer(dataTable);
+        pages.shoppingCartPage().fillCustomerInformation(customer.getFirstName(), customer.getLastName(), customer.getZipCode());
+    }
 
+    @And("verify customer information displayed in X page")
+    public void verifyCustomerInformationDisplayedInXPage() {
+
+       // assertEquals(customer.getFirstName(), driver.findElement(By.id("")).getText());
+
+    }
 }

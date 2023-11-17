@@ -89,16 +89,16 @@ public class ProductsPage extends BasePage {
         return items.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
-//    public void verifySortDropDownOptions(List<String> options) {
-//        WebElement dropdown = driver.findElement(By.xpath("//select[@class='product_sort_container']"));
-//        Select select = new Select(dropdown);
-//        List<WebElement> content = select.getOptions();
-//        List<String> text = new ArrayList<>();
-//        for(WebElement each: content){
-//            text.add(each.getText());
-//        }
-//        assertEquals(options,text );
-//    }
+    public void verifySortDropDownOptions(List<String> options) {
+        WebElement dropdown = driver.findElement(By.xpath("//select[@class='product_sort_container']"));
+        Select select = new Select(dropdown);
+        List<WebElement> content = select.getOptions();
+        List<String> text = new ArrayList<>();
+        for(WebElement each: content){
+            text.add(each.getText());
+        }
+        assertEquals(options,text );
+    }
 
     // or (short way)
 
@@ -123,12 +123,19 @@ public class ProductsPage extends BasePage {
         select.selectByVisibleText(option);
     }
 
+//    public List<String> getHamburgerMenu() {
+//        wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(subMenus)));
+//        List<WebElement> menu = driver.findElements(subMenus);
+//        List<String> subMenus = menu.stream().map(WebElement::getText).collect(Collectors.toList());
+//        return subMenus;
+//    }
+
     public List<String> getHamburgerMenu() {
         wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(subMenus)));
         List<WebElement> menu = driver.findElements(subMenus);
-        List<String> subMenus = menu.stream().map(WebElement::getText).collect(Collectors.toList());
-        return subMenus;
+        return getTextFromElements(menu);
     }
+
 
     public void openHamburgerMenu() {
         clickElement(menuButton);
