@@ -17,8 +17,8 @@ public class Interview {
 
     @Test
     public void demo() {
-        // System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
-        WebDriverManager.chromedriver().setup();
+        System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
+     // WebDriverManager.chromedriver().setup();
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
         driver.manage().window().maximize();
