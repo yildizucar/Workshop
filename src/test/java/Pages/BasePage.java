@@ -34,6 +34,13 @@ public class BasePage extends CommonMethods {
     }
 
     public String getPageHeader() {
+        // return driver.findElement(pageHeader).getText();
+        // return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='title']"))).getText();
+        // return wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".title"))).getText();
         return wait.until(ExpectedConditions.visibilityOfElementLocated(pageHeader)).getText();
+    }
+
+    public void verifyPageHeader(String header) {
+        assertEquals(header, getPageHeader());
     }
 }

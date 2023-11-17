@@ -26,19 +26,8 @@ public class ProductsPage extends BasePage {
     private static final By sortProductsDropdown = By.className("product_sort_container");
     private static final By productNames = By.cssSelector(".inventory_item_name");
     private static final By subMenus = By.cssSelector(".menu-item");
-    private static final String product_template = "//div[text()='%s']/../../following-sibling::div/button";
+    private static final String addToCartButtonTemplate = "//div[text()='%s']/../../following-sibling::div/button";
 
-
-    public void verifyPageHeader(String header) {
-        assertEquals(header, getPageHeader());
-    }
-
-    public String getPageHeader() {
-        // return driver.findElement(pageHeader).getText();
-        // return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='title']"))).getText();
-        // return wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".title"))).getText();
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(pageHeader)).getText();
-    }
 
     public void addItemToCart(String productName) {
 
@@ -47,7 +36,7 @@ public class ProductsPage extends BasePage {
         // driver.findElement(By.xpath(product)).click();
 
         // option 2
-        String product = String.format(product_template, productName);
+        String product = String.format(addToCartButtonTemplate, productName);
         driver.findElement(By.xpath(product)).click();
 
         // option 3
@@ -59,12 +48,8 @@ public class ProductsPage extends BasePage {
     }
 
     public void removeItem(String productName) {
-        // if item is already added, it will be removed
-        addItemToCart(productName);
-
-        // or
-        // String product = String.format(product_template, productName);
-        // driver.findElement(By.xpath(product)).click();
+        String product = String.format(addToCartButtonTemplate, productName);
+        driver.findElement(By.xpath(product)).click();
     }
 
     public void addItemsToCart(List<String> items) {

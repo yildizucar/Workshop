@@ -16,7 +16,6 @@ Feature: Shopping Cart Functionality
       | About           |
       | Logout          |
       | Reset App State |
-#  NOT: Bazen asagidaki formatta cikabiliyor karsimiza
     And verify hamburger menu contains following submenus
       | All Items, About, Logout, Reset App State |
 

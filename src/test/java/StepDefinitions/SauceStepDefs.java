@@ -51,13 +51,14 @@ public class SauceStepDefs extends CoreObjects {
         pages.loginPage().login(dataTable);
     }
 
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~`
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     @Then("verify login is successful")
     public void verify_login_is_successful() {
         // assertTrue(driver.getTitle().contentEquals("Swag Labs"));
         // assertEquals("Swag Labs", driver.getTitle());
-        verify_title_is("Swag Labs");
+        // verify_title_is("Swag Labs");
+        pages.verifyTitle("Swag Labs");
     }
 
     @Then("verify title is {string}")
@@ -70,12 +71,11 @@ public class SauceStepDefs extends CoreObjects {
 
         switch (page.toLowerCase()) {
             case "product":
-                pages.productsPage().verifyTitle("Swag Labs");
+                pages.productsPage().verifyTitle(title);
                 break;
             case "shopping":
-                pages.shoppingCartPage().verifyTitle("...");
+                pages.shoppingCartPage().verifyTitle(title);
         }
-
     }
 
     @Then("verify page header is {string}")
@@ -211,5 +211,9 @@ public class SauceStepDefs extends CoreObjects {
     public void verifyUserSeesTheMessage(String text) {
         assertTrue(pages.confirmationPage().getConfirmationMessage().contentEquals(text));
     }
+
+    // ~~~~~~~~~~~~~~~~~~ DAY 5 ~~~~~~~~~~~~~~~~~~~~~~
+
+
 
 }
