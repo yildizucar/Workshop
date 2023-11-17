@@ -27,10 +27,10 @@ mvn test -Dcucumber.features="@target/rerun.txt"
 ```
 </details>
 
-<br>
+<br><br>
 
-![](img/divider.png)
-
+<img src="img/divider.png" width="325">
+<img src="img/divider.png" width="325">
 
 # *Datatable*
 
