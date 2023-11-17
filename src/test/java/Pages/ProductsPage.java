@@ -6,7 +6,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.testng.Assert;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -94,10 +93,10 @@ public class ProductsPage extends BasePage {
         Select select = new Select(dropdown);
         List<WebElement> content = select.getOptions();
         List<String> text = new ArrayList<>();
-        for(WebElement each: content){
+        for (WebElement each : content) {
             text.add(each.getText());
         }
-        assertEquals(options,text );
+        assertEquals(options, text);
     }
 
     // or (short way)
@@ -149,10 +148,10 @@ public class ProductsPage extends BasePage {
         List<String> subMenus = menu.stream().map(WebElement::getText).collect(Collectors.toList());
 
         String output = "";
-        for(String each : subMenus){
-         output += each + ", ";
+        for (String each : subMenus) {
+            output += each + ", ";
         }
-        output = output.substring(0, output.length()-2);
+        output = output.substring(0, output.length() - 2);
         return output;
 
         // or
@@ -163,11 +162,11 @@ public class ProductsPage extends BasePage {
     }
 
     public void verifyProductsSortedBy(String option) {
-        switch(option){
+        switch (option) {
             case "name":
                 List<WebElement> itemNames = driver.findElements(By.className("inventory_item_name"));
                 List<String> names = new LinkedList<>();
-                for(WebElement each: itemNames){
+                for (WebElement each : itemNames) {
                     names.add(each.getText());
                 }
                 assertTrue(isListSorted(names));
@@ -175,7 +174,7 @@ public class ProductsPage extends BasePage {
             case "price":
                 List<WebElement> itemPrice = driver.findElements(By.className("inventory_item_price"));
                 List<Double> prices = new LinkedList<>();
-                for(WebElement each: itemPrice){            //$5.67
+                for (WebElement each : itemPrice) {            //$5.67
                     prices.add(Double.parseDouble(each.getText().replace("$", "")));
                 }
                 assertTrue(isSorted(prices));
