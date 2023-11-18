@@ -14,7 +14,8 @@ public class Customer {
     public Customer(DataTable dataTable) {
         Map<String, String> map = dataTable.asMap();
         this.firstName = map.get("firstName");
-        this.lastName = map.get("zipCode");
+        this.lastName = map.get("lastName");
+        this.zipCode = map.get("zipCode");
     }
 }
 

@@ -36,7 +36,8 @@ public class ProductsPage extends BasePage {
 
         // option 2
         String product = String.format(addToCartButtonTemplate, productName);
-        driver.findElement(By.xpath(product)).click();
+        // driver.findElement(By.xpath(product)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(product))).click();
 
         // option 3
         // String product = "//div[text()='" + productName + "']/../../following-sibling::div/button";

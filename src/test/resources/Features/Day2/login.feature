@@ -12,7 +12,7 @@ Feature: Login functionality of SauceDemo.com
     And verify page header is "Products"
     And verify title is "Swag Labs"
     And verify title is "Swag Labs" in "Products" page
-    And verify page header is "Product"
+    And verify page header is "Products"
 
 
   Scenario Outline: Login With Invalid Credentials
