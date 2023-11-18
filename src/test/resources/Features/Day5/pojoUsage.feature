@@ -2,6 +2,7 @@
 Feature: Shopping Cart Functionality
 
   Scenario Outline: Validate Checkout functionality USING POJO
+    Given user login as "standard_user"
     When user add following items to cart
       | <item1> |
       | <item2> |
