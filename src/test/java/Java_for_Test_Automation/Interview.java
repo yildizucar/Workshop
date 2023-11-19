@@ -1,6 +1,5 @@
 package Java_for_Test_Automation;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -37,7 +36,6 @@ public class Interview {
         // or
         // driver.findElement(passwordField).sendKeys("secret_sauce")                               // 2
         // driver.findElement(By.id("login-button")).click();
-
 
         String pageHeader = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("title"))).getText();
         Assertions.assertEquals("Products", pageHeader);

@@ -12,9 +12,22 @@ import static TestNG_Sample.Demo.driver;
 
 public class NavigationPage {
 
-    public static void open() {
+    public void open() {
         driver.get("https://magento.softwaretestingboard.com/");
     }
 
+    public void navigateToMenu(String mainMenu, String subMenu) {
+        By menuItem = By.xpath("//span[.='" + mainMenu + "']/parent::a");
+        WebElement menu = driver.findElement(menuItem);
 
+        Actions action = new Actions(driver);
+        action.moveToElement(menu).perform();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[.='" + subMenu + "']/.."))).click();
+    }
+
+    public void clickOnGearMenu() {
+        driver.findElement(By.xpath("//span[.='Gear']/parent::a")).click();
+    }
 }
