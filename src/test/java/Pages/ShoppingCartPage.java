@@ -1,5 +1,6 @@
 package Pages;
 
+import Framework.Pojo.Customer;
 import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -67,5 +68,13 @@ public class ShoppingCartPage extends BasePage {
         driver.findElement(firstNameField).sendKeys(firstName);
         driver.findElement(lastNameField).sendKeys(lastName);
         driver.findElement(zipCodeField).sendKeys(zipCode);
+    }
+
+    public void fillCustomerInformation(Customer customer) {
+        fillCustomerInformation(
+                customer.getFirstName(),
+                customer.getLastName(),
+                customer.getZipCode()
+        );
     }
 }

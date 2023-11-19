@@ -229,7 +229,8 @@ public class SauceStepDefs extends CoreObjects {
     @And("user enters checkout information \\(pojo)")
     public void userEntersCheckoutInformationPojo(DataTable dataTable) {
         customer = new Customer(dataTable);
-        pages.shoppingCartPage().fillCustomerInformation(customer.getFirstName(), customer.getLastName(), customer.getZipCode());
+     // pages.shoppingCartPage().fillCustomerInformation(customer.getFirstName(), customer.getLastName(), customer.getZipCode());
+        pages.shoppingCartPage().fillCustomerInformation(customer);
     }
 
     @And("verify customer information displayed in X page")
