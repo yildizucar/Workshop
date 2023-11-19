@@ -1,5 +1,6 @@
 package TestNG_Sample;
 
+import Framework.Core.CoreObjects;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -9,9 +10,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import static TestNG_Sample.Demo.driver;
-
-public class ProductPage {
+public class ProductPage extends CoreObjects {
 
     By sortDropDown = By.xpath("(//select[@id='sorter'])[1]");
     By pageHeader = By.id("page-title-heading");
