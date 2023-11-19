@@ -3,6 +3,7 @@ package StepDefinitions;
 import Framework.Core.CoreObjects;
 import Framework.Pojo.Customer;
 import Framework.Pojo.User;
+import Framework.Utilities.CommonMethods;
 import Framework.Utilities.ConfigurationReader;
 import Pages.LoginPage;
 import io.cucumber.datatable.DataTable;
@@ -10,9 +11,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.java.ja.且つ;
-import org.openqa.selenium.By;
 
+import java.io.IOException;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -102,12 +102,12 @@ public class SauceStepDefs extends CoreObjects {
     }
 
     @And("user add following items to cart")
-    public void userAddFollowingItemsToCart(List<String> items) {
+    public void userAddFollowingItemsToCart(List<String> items) throws InterruptedException {
         pages.productsPage().addItemsToCart(items);
     }
 
     @And("^user (add|removes) \"([^\"]*)\" (?:to|from) shopping cart$")
-    public void shoppingCart(String transaction, String product) {
+    public void shoppingCart(String transaction, String product) throws InterruptedException {
 
         switch (transaction) {
             case "add":
@@ -153,7 +153,6 @@ public class SauceStepDefs extends CoreObjects {
     }
 
 
-
     // ~~~~~~~~~~~~~~~~~~ DAY 4 ~~~~~~~~~~~~~~~~~~~~~~
 
     @And("verify hamburger menu contains following submenus")
@@ -177,7 +176,8 @@ public class SauceStepDefs extends CoreObjects {
     }
 
     @Then("verify that the added items are present in the cart")
-    public void verifyThatTheAddedItemsArePresentInTheCart(List<String> expected) {
+    public void verifyThatTheAddedItemsArePresentInTheCart(List<String> expected) throws IOException {
+        CommonMethods.takeScreenshot("listedItems");
         assertEquals(expected, pages.shoppingCartPage().getItemsFromShoppingCart());
     }
 
@@ -235,7 +235,7 @@ public class SauceStepDefs extends CoreObjects {
     @And("verify customer information displayed in X page")
     public void verifyCustomerInformationDisplayedInXPage() {
 
-       // assertEquals(customer.getFirstName(), driver.findElement(By.id("")).getText());
+        // assertEquals(customer.getFirstName(), driver.findElement(By.id("")).getText());
 
     }
 }

@@ -11,24 +11,24 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class Hooks extends CoreObjects {
-
-    @Before(value = "not @hookless")
-    public void initializeDriver() {
-        driver = Driver.getDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
-        initObjects();
-    }
-
-    @After(value = "not @hookless")
-    public void tearDown() {
-        Driver.closeDriver();
-    }
-
-    public void initObjects() {
-        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-        js = (JavascriptExecutor) driver;
-        actions = new Actions(driver);
-    }
+//
+//    @Before(value = "not @hookless")
+//    public void initializeDriver() {
+//        driver = Driver.getDriver();
+//        driver.manage().window().maximize();
+//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
+//        initObjects();
+//    }
+//
+//    @After(value = "not @hookless")
+//    public void tearDown() {
+//        Driver.closeDriver();
+//    }
+//
+//    public void initObjects() {
+//        wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//        js = (JavascriptExecutor) driver;
+//        actions = new Actions(driver);
+//    }
 
 }

@@ -3,12 +3,15 @@ package Pages;
 import Framework.Utilities.ConfigurationReader;
 import io.cucumber.datatable.DataTable;
 import org.openqa.selenium.By;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 
 import static org.junit.Assert.assertTrue;
 
 public class LoginPage extends BasePage {
+    private static final Logger log = LoggerFactory.getLogger(LoginPage.class);
 
     private static final By usernameField = By.id("user-name");
     private static final By passwordField = By.id("password");
@@ -22,6 +25,7 @@ public class LoginPage extends BasePage {
 
     public void openURL(String url) {
         driver.get(url);
+        log.info("Navigated to {}", url);
     }
 
     public void openLoginPage() {
@@ -36,6 +40,8 @@ public class LoginPage extends BasePage {
 
         // or
         // driver.findElement(passwordField).sendKeys(password, Keys.ENTER);
+
+        log.info("Login attempt by {}", username);
     }
 
     public void login(String username) {
@@ -61,6 +67,7 @@ public class LoginPage extends BasePage {
     public void verifyErrorMessage(String message) {
         String errorMessage = driver.findElement(By.xpath("//h3")).getText();
         assertTrue(errorMessage.contains(message));
+        log.info("Expected message \"{}\"  validated!", message);
     }
 
 

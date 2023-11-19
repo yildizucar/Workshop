@@ -1,5 +1,6 @@
 package Pages;
 
+import Framework.Constants.ClickType;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -19,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ProductsPage extends BasePage {
     private static final Logger log = LoggerFactory.getLogger(ProductsPage.class);
 
-    private static final By pageHeader = By.cssSelector(".title");
     private static final By shoppincCardCount = By.xpath("//span[@class='shopping_cart_badge']");
     private static final By shoppingCart = By.xpath("//a[@class='shopping_cart_link']");
     private static final By sortProductsDropdown = By.className("product_sort_container");
@@ -35,9 +35,9 @@ public class ProductsPage extends BasePage {
         // driver.findElement(By.xpath(product)).click();
 
         // option 2
-        String product = String.format(addToCartButtonTemplate, productName);
-        // driver.findElement(By.xpath(product)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(product))).click();
+        // String product = String.format(addToCartButtonTemplate, productName);
+        //driver.findElement(By.xpath(product)).click();
+        // wait.until(ExpectedConditions.elementToBeClickable(By.xpath(product))).click();
 
         // option 3
         // String product = "//div[text()='" + productName + "']/../../following-sibling::div/button";
@@ -45,6 +45,15 @@ public class ProductsPage extends BasePage {
 
         // option 4
         // driver.findElement(By.xpath("//div[text()='" + productName + "']/../../following-sibling::div/button")).click();
+
+        // option 5
+        String product = String.format(addToCartButtonTemplate, productName);
+        WebElement addToCartButton = driver.findElement(By.xpath(product));
+        click(addToCartButton, ClickType.JSEXECUTOR);
+        // clickWithJS(addToCartButton);
+
+        log.info("{} is added to shopping cart", productName);
+
     }
 
     public void removeItem(String productName) {
@@ -121,6 +130,7 @@ public class ProductsPage extends BasePage {
         // supported parameters: Price (high to low)|Price (low to high)|Name (A to Z)|Name (Z to A)
         Select select = new Select(driver.findElement(sortProductsDropdown));
         select.selectByVisibleText(option);
+        log.info("Items sorted by: {}", option);
     }
 
 //    public List<String> getHamburgerMenu() {
@@ -198,5 +208,6 @@ public class ProductsPage extends BasePage {
 
     public void navigateToShoppingCart() {
         driver.findElement(shoppingCart).click();
+        log.info("User navigated to shopping cart");
     }
 }
