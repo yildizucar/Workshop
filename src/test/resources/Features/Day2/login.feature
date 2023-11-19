@@ -32,9 +32,7 @@ Feature: Login functionality of SauceDemo.com
     Given user login to the website
       | username | "<username>" |
       | password | "<password>" |
-    Then verify the "Username and password do not match any user in this service" in login page
-    * verify the "<error_message>" in login page
-    * verify the "<error_message>" in "<page>" page
+    Then verify the "<error_message>" in login page
 
     Examples:
       | username      | password     | error_message                                               | page  |
