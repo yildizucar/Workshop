@@ -19,7 +19,7 @@ mvn test -D cucumber.filter.name=".*<scenario name>.*"
 
 ### How to run scripts in a specific browser with Maven
 ```bash
-mvn test `-Dbrowser=chrome` -Dcucumber.filter.tags="@tagname"
+mvn test -Dbrowser=chrome -Dcucumber.filter.tags="@tagname"
 ```
 ### Running only the scenarios that failed in the previous run
 ```bash
@@ -117,7 +117,6 @@ When user login to the website
 
 ###### Example:
 ```jshelllanguage
-Map<String, String> credentials = dataTable.asMap();
 public static void login(DataTable dataTable) {
     Map<String, String> credentials = dataTable.asMap();
 
