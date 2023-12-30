@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import static org.junit.Assert.assertEquals;
 
 public class BasePage extends CommonMethods {
-    public static final String SAUCEDEMO = "https://www.saucedemo.com/";
+    public static final String SAUCEDEMO = "https://www.saucedemo.com/"; //Constant denir SAUCEDEMO variable yazilir ve bu degismez
 
 
     public static final By menuButton = By.cssSelector(".bm-burger-button");

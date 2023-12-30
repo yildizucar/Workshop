@@ -62,14 +62,14 @@ public class ProductsPage extends BasePage {
 
     public void addItemsToCart(List<String> items) {
         for (String each : items) {
-            addItemToCart(each);
+            addItemToCart(each);     // islemi bu yapiyor  public void addItemToCart(String productName).Kactane item olursa olsun
         }
         // or
-        // items.forEach(this::addItemToCart);
+        // items.forEach(this::addItemToCart);  // kisa yolu buda
     }
 
     public int getShoppingCartItemCount() {
-        String count = driver.findElement(shoppincCardCount).getText();
+        String count = driver.findElement(shoppincCardCount).getText(); // get text ile aldigim stringi  Integer.parseInt(count) ile integera cevirdim
         return Integer.parseInt(count);
     }
 

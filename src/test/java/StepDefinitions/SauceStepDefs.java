@@ -22,14 +22,14 @@ public class SauceStepDefs extends CoreObjects {
     Customer customer;
 
     @Given("user navigates to {string}")
-    public void user_navigates_to(String url) {
+    public void user_navigates_to(String url) {   // login page parametreli
         // driver.get(url);
         pages.loginPage().openURL(url);
     }
 
     @Given("user is on landing page")
     @Given("I go to login page")
-    public void i_go_to_login_page() {
+    public void i_go_to_login_page() {           // login page parametresiz  yaptik
         driver.get("https://www.saucedemo.com/");
         driver.get(ConfigurationReader.get("url"));
         pages.loginPage().openLoginPage();
@@ -60,8 +60,8 @@ public class SauceStepDefs extends CoreObjects {
     @Then("verify login is successful")
     public void verify_login_is_successful() {
         // assertTrue(driver.getTitle().contentEquals("Swag Labs"));
-        // assertEquals("Swag Labs", driver.getTitle());
-        // verify_title_is("Swag Labs");
+        // assertEquals("Swag Labs", driver.getTitle());  once actual value , sonra excpected value
+        // verify_title_is("Swag Labs");  ==> bu su demek 69 ine aslinda bir method.Sadece bunu yazarak  kullananbilrim. YANI step def, baska bir step def cagirabiliyoruz
         pages.verifyTitle("Swag Labs");
     }
 
@@ -84,7 +84,7 @@ public class SauceStepDefs extends CoreObjects {
 
     @Then("verify page header is {string}")
     public void verify_page_header_is(String pageHeader) {
-        assertEquals(pageHeader, pages.getPageHeader());
+        assertEquals(pageHeader, pages.getPageHeader());//bizim firma bu sekilde kabul ediyor
     }
 
     @Then("verify the {string} in login page")

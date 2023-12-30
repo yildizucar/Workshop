@@ -20,7 +20,7 @@ public class LoginPage extends BasePage {
 
     public static void openLandingPage() {
         driver.get(ConfigurationReader.get("url"));
-        // driver.get(SAUCEDEMO);
+         //driver.get(SAUCEDEMO);
     }
 
     public void openURL(String url) {
@@ -32,7 +32,7 @@ public class LoginPage extends BasePage {
         openURL(ConfigurationReader.get("url"));
     }
 
-
+  //OVERLOADING = Ayni method ismi farkli paramatreler ==> public void login
     public void login(String username, String password) {
         driver.findElement(usernameField).sendKeys(username);
         driver.findElement(passwordField).sendKeys(password);
@@ -57,9 +57,10 @@ public class LoginPage extends BasePage {
         Map<String, String> credentials = dataTable.asMap();
         login(credentials.get("username"), credentials.get("password"));
 
+        // MAP de VALUE  okumak istiyorsam Get(key ) kullaniyoruz aslinda
         // driver.findElement(usernameField).sendKeys(credentials.get("username"));
         // driver.findElement(passwordField).sendKeys(credentials.get("password"));
-        // driver.findElement(passwordField).sendKeys(credentials.get("password"), Keys.ENTER);
+        // driver.findElement(passwordField).sendKeys(credentials.get("password"), Keys.ENTER);   ==>  CLIK gorevini yapiyor oyuzden ekledik
 
     }
 

@@ -1,6 +1,8 @@
 @day2
 Feature: Shopping Cart Functionality
 
+  #TETS CASE , Urunleri sec, 1 tanesini sil (remove) , add to cart 3 dogru sayi verify yap
+
   Scenario Outline: Validate shopping cart
   # Given user is on landing page
     Given user login as "standard_user"
