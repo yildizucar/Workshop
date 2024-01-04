@@ -1,4 +1,4 @@
-@cucumber @hookless
+@cucumber @hookless @ignore
 Feature: Example of simple Pojo usage
 
   We use scenario outline, to run the same scenario multiple times with different sets of data

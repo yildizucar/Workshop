@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import static org.junit.Assert.assertEquals;
 
 public class BasePage extends CommonMethods {
-    public static final String SAUCEDEMO = "https://www.saucedemo.com/";
+    public static final String SAUCEDEMO = "https://www.saucedemo.com/"; //Constant denir SAUCEDEMO variable yazilir ve bu degismez
 
 
     public static final By menuButton = By.cssSelector(".bm-burger-button");
@@ -34,6 +34,13 @@ public class BasePage extends CommonMethods {
     }
 
     public String getPageHeader() {
+        // return driver.findElement(pageHeader).getText();
+        // return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='title']"))).getText();
+        // return wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".title"))).getText();
         return wait.until(ExpectedConditions.visibilityOfElementLocated(pageHeader)).getText();
+    }
+
+    public void verifyPageHeader(String header) {
+        assertEquals(header, getPageHeader());
     }
 }

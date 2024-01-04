@@ -1,33 +1,30 @@
 package Pages;
 
+import Framework.Constants.ClickType;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
-
-import java.lang.reflect.Array;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
-
+import java.util.stream.Collectors;
 import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ProductsPage extends BasePage {
+    private static final Logger log = LoggerFactory.getLogger(ProductsPage.class);
 
-    private static final By pageHeader = By.cssSelector(".title");
     private static final By shoppincCardCount = By.xpath("//span[@class='shopping_cart_badge']");
-    private static final String product_template = "//div[text()='%s']/../../following-sibling::div/button";
+    private static final By shoppingCart = By.xpath("//a[@class='shopping_cart_link']");
+    private static final By sortProductsDropdown = By.className("product_sort_container");
+    private static final By productNames = By.cssSelector(".inventory_item_name");
+    private static final By subMenus = By.cssSelector(".menu-item");
+    private static final String addToCartButtonTemplate = "//div[text()='%s']/../../following-sibling::div/button";
 
-
-    public void verifyPageHeader(String header) {
-        assertEquals(header, getPageHeader());
-    }
-
-    public String getPageHeader() {
-        // return driver.findElement(By.xpath("")).getText();
-        // return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='title']"))).getText();
-        // return wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".title"))).getText();
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(pageHeader)).getText();
-    }
 
     public void addItemToCart(String productName) {
 
@@ -36,8 +33,9 @@ public class ProductsPage extends BasePage {
         // driver.findElement(By.xpath(product)).click();
 
         // option 2
-        String product = String.format(product_template, productName);
-        driver.findElement(By.xpath(product)).click();
+        // String product = String.format(addToCartButtonTemplate, productName);
+        //driver.findElement(By.xpath(product)).click();
+        // wait.until(ExpectedConditions.elementToBeClickable(By.xpath(product))).click();
 
         // option 3
         // String product = "//div[text()='" + productName + "']/../../following-sibling::div/button";
@@ -45,50 +43,194 @@ public class ProductsPage extends BasePage {
 
         // option 4
         // driver.findElement(By.xpath("//div[text()='" + productName + "']/../../following-sibling::div/button")).click();
+
+        // option 5
+        String product = String.format(addToCartButtonTemplate, productName);
+        WebElement addToCartButton = driver.findElement(By.xpath(product));
+        click(addToCartButton, ClickType.JSEXECUTOR);
+        // clickWithJS(addToCartButton);
+
+        log.info("{} is added to shopping cart", productName);
+
     }
 
-    public void removeItem(String product) {
-        // if item is already added, it will be removed
-        addItemToCart(product);
-
-        // or
-        // String product = String.format(product_template, productName);
-        // driver.findElement(By.xpath(product)).click();
+    public void removeItem(String productName) {
+        String product = String.format(addToCartButtonTemplate, productName);
+        driver.findElement(By.xpath(product)).click();
     }
 
     public void addItemsToCart(List<String> items) {
         for (String each : items) {
-            addItemToCart(each);
+            addItemToCart(each);     // islemi bu yapiyor  public void addItemToCart(String productName).Kactane item olursa olsun
         }
-        //items.forEach(this::addItemToCart);
+        // or
+        // items.forEach(this::addItemToCart);  // kisa yolu buda
     }
 
     public int getShoppingCartItemCount() {
-        String count = driver.findElement(shoppincCardCount).getText();
+        String count = driver.findElement(shoppincCardCount).getText(); // get text ile aldigim stringi  Integer.parseInt(count) ile integera cevirdim
         return Integer.parseInt(count);
     }
 
-    public int getCountOfPruducts() {
-//        List<WebElement> product = driver.findElements(By.cssSelector("inventory_item"));
-//        return product.size();
-        return driver.findElements(By.cssSelector(".inventory_item")).size(); //.inventory_item_name bu zpathde kullanabilir 6 tane gosteriyor
+// <<<<<<< yildiz
+//     public int getCountOfPruducts() {
+// //        List<WebElement> product = driver.findElements(By.cssSelector("inventory_item"));
+// //        return product.size();
+//         return driver.findElements(By.cssSelector(".inventory_item")).size(); //.inventory_item_name bu zpathde kullanabilir 6 tane gosteriyor
+//     }
+
+//     public void verifySortDropDownOptions(List<String> options) {
+//         // dropdown konusunu handle yapan class - DropDown menulerini hangi sekillerde kac degisik yoldan secebilirsin
+//         //select class ile -visible .option.
+
+//         WebElement dropdown = driver.findElement(By.xpath("//select[@class ='product_sort_container'] "));
+//         Select select = new Select(dropdown);
+//         List<WebElement> content = select.getOptions();  //iki seyi karsilastirmam lazim . DropDowndakileri bulmam lazim  ve bunu Feature Fileden gelen  Stingden olusan listim ile karsilastirmam lazim
+//         List<String> text = new ArrayList<>();            // 2 Ayni dataType karsilastirmam lazim. Bana Featuredan List string gelmis.Su an elimizde WebElementleden olusan bir liste var
+//         for (WebElement each : content) {               //Burada da ListOf Stringe cevirmem gerekli
+//             text.add(each.getText());                    //applicarindaki nametto z falan yazan yerdeki isimleri alamam gererkli,Bunlari alip Featiredeki liste ile karsilastirabileyim
+
+//         }                                               //WebElelmntelrden olusan bir list var bunlarin gettext lerini almam lazim
+//         assertEquals(options, text);                    //Text listini, contentden Textleri alip text dizisine atmam lazim
+//     }                                                    //soru contenteki web elemnetlerdeki textleri alip nasil text e ekleyebilirim
+//                                                    //Amac =text listine  her bir Webelementin getText ile textini  aliyor ve 84 deki textimize ekliyri
+// }
+// =======
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ DAY 3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    public int getCountOfProducts() {
+        // List<WebElement> items = driver.findElements(By.cssSelector(".inventory_item_name"));
+        // return items.size();
+        return driver.findElements(productNames).size();
+    }
+
+//    public List<String> getProducts() {
+//        List<WebElement> items = driver.findElements(By.cssSelector(".inventory_item_name "));
+//        List<String> productNames = new ArrayList<>();
+//        for(WebElement each : items){
+//            productNames.add(each.getText());
+//        }
+//        return productNames;
+//    }
+
+    // or (short way)
+
+    public List<String> getProducts() {
+        List<WebElement> items = driver.findElements(By.cssSelector(".inventory_item_name "));
+        return items.stream().map(WebElement::getText).collect(Collectors.toList());
     }
 
     public void verifySortDropDownOptions(List<String> options) {
-        // dropdown konusunu handle yapan class - DropDown menulerini hangi sekillerde kac degisik yoldan secebilirsin
-        //select class ile -visible .option.
-
-        WebElement dropdown = driver.findElement(By.xpath("//select[@class ='product_sort_container'] "));
+        WebElement dropdown = driver.findElement(By.xpath("//select[@class='product_sort_container']"));
         Select select = new Select(dropdown);
-        List<WebElement> content = select.getOptions();  //iki seyi karsilastirmam lazim . DropDowndakileri bulmam lazim  ve bunu Feature Fileden gelen  Stingden olusan listim ile karsilastirmam lazim
-        List<String> text = new ArrayList<>();            // 2 Ayni dataType karsilastirmam lazim. Bana Featuredan List string gelmis.Su an elimizde WebElementleden olusan bir liste var
-        for (WebElement each : content) {               //Burada da ListOf Stringe cevirmem gerekli
-            text.add(each.getText());                    //applicarindaki nametto z falan yazan yerdeki isimleri alamam gererkli,Bunlari alip Featiredeki liste ile karsilastirabileyim
+        List<WebElement> content = select.getOptions();
+        List<String> text = new ArrayList<>();
+        for (WebElement each : content) {
+            text.add(each.getText());
+        }
+        assertEquals(options, text);
+    }
 
-        }                                               //WebElelmntelrden olusan bir list var bunlarin gettext lerini almam lazim
-        assertEquals(options, text);                    //Text listini, contentden Textleri alip text dizisine atmam lazim
-    }                                                    //soru contenteki web elemnetlerdeki textleri alip nasil text e ekleyebilirim
-                                                   //Amac =text listine  her bir Webelementin getText ile textini  aliyor ve 84 deki textimize ekliyri
+    // or (short way)
+
+    public void verifySortDropdownOptions(List<String> content) {
+        WebElement dropdown = driver.findElement(sortProductsDropdown);
+        Select select = new Select(dropdown);
+        List<WebElement> dropdownOptions = select.getOptions();
+        List<String> options = dropdownOptions.stream().map(WebElement::getText).collect(Collectors.toList());
+        assertEquals(options, content);
+    }
+
+    public List<String> getSortDropdownOptions() {
+        WebElement dropdown = driver.findElement(sortProductsDropdown);
+        Select select = new Select(dropdown);
+        List<WebElement> dropdownOptions = select.getOptions();
+        return dropdownOptions.stream().map(WebElement::getText).collect(Collectors.toList());
+    }
+
+    public void sortProducts(String option) {
+        // supported parameters: Price (high to low)|Price (low to high)|Name (A to Z)|Name (Z to A)
+        Select select = new Select(driver.findElement(sortProductsDropdown));
+        select.selectByVisibleText(option);
+        log.info("Items sorted by: {}", option);
+    }
+
+//    public List<String> getHamburgerMenu() {
+//        wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(subMenus)));
+//        List<WebElement> menu = driver.findElements(subMenus);
+//        List<String> subMenus = menu.stream().map(WebElement::getText).collect(Collectors.toList());
+//        return subMenus;
+//    }
+
+    public List<String> getHamburgerMenu() {
+        wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(subMenus)));
+        List<WebElement> menu = driver.findElements(subMenus);
+        return getTextFromElements(menu);
+    }
+
+
+
+    public void openHamburgerMenu() {
+        clickElement(menuButton);
+    }
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ DAY 4 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    public String getHamburgerMenu2() {
+        wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(subMenus)));
+        List<WebElement> menu = driver.findElements(subMenus);
+        List<String> subMenus = menu.stream().map(WebElement::getText).collect(Collectors.toList());
+
+        String output = "";
+        for (String each : subMenus) {
+            output += each + ", ";
+        }
+        output = output.substring(0, output.length() - 2);
+        return output;
+
+        // or
+
+        // return subMenus.stream()
+        //        .map(String::valueOf)
+        //        .collect(Collectors.joining(", "));
+    }
+
+    public void verifyProductsSortedBy(String option) {
+        switch (option) {
+            case "name":
+                List<WebElement> itemNames = driver.findElements(By.className("inventory_item_name"));
+                List<String> names = new LinkedList<>();
+                for (WebElement each : itemNames) {
+                    names.add(each.getText());
+                }
+                assertTrue(isListSorted(names));
+                break;
+            case "price":
+                List<WebElement> itemPrice = driver.findElements(By.className("inventory_item_price"));
+                List<Double> prices = new LinkedList<>();
+                for (WebElement each : itemPrice) {            //$5.67
+                    prices.add(Double.parseDouble(each.getText().replace("$", "")));
+                }
+                assertTrue(isSorted(prices));
+                break;
+        }
+
+    }
+
+    private static boolean isListSorted(List<String> list) {
+        List<String> copy = new LinkedList<>(list);
+        Collections.sort(copy);
+        return list.equals(copy);
+    }
+
+    private static boolean isSorted(List<Double> list) {
+        List<Double> copy = new LinkedList<>(list);
+        Collections.sort(copy);
+        return list.equals(copy);
+    }
+
+    public void navigateToShoppingCart() {
+        driver.findElement(shoppingCart).click();
+        log.info("User navigated to shopping cart");
+    }
 }
-
-

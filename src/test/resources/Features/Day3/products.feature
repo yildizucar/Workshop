@@ -1,3 +1,4 @@
+@day3
 Feature: Shopping Cart Functionality
 
   Background:
@@ -15,7 +16,6 @@ Feature: Shopping Cart Functionality
       | About           |
       | Logout          |
       | Reset App State |
-#  NOT: Bazen asagidaki formatta cikabiliyor karsimiza. Yapabildiginizi yapin
     And verify hamburger menu contains following submenus
       | All Items, About, Logout, Reset App State |
 
@@ -23,14 +23,7 @@ Feature: Shopping Cart Functionality
   Scenario: Validate sort options
     When user sort the items by "Name (A to Z)"
     Then verify that items are sorted by "name"
+    When user sort the items by "Price (low to high)"
+    And verify that items are sorted by "price"
 
 
-
-
-
-
-
-
-  #    When user sort the items by "Price (low to high)"
-#    Then verify that the item with lowest price is displayed first
-#    And verify that items are sorted by "price"

@@ -38,7 +38,9 @@ public class Driver extends CoreObjects {
                 break;
             case "chromeHeadless":
                 WebDriverManager.chromedriver().setup();
-                driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--headless=new");
+                driver = new ChromeDriver(options);
                 break;
             case "firefox":
                 WebDriverManager.firefoxdriver().setup();
@@ -46,7 +48,9 @@ public class Driver extends CoreObjects {
                 break;
             case "firefoxHeadless":
                 WebDriverManager.firefoxdriver().setup();
-                driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
+                FirefoxOptions option = new FirefoxOptions();
+                option.addArguments("--headless=new");
+                driver = new FirefoxDriver(option);
                 break;
             case "ie":
                 if (!System.getProperty("os.name").toLowerCase().contains("windows"))

@@ -18,13 +18,27 @@ public class D05_StringManipulations {
 
         System.out.println(str.equalsIgnoreCase("CYBERZONE"));  // true
 
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
         System.out.println(str.split("Z")[0]);          // Cyber
         System.out.println(str.split("Z")[1]);          // one
 
         System.out.println(str.split("Zone")[0]);       // Cyber
         //System.out.println(str.split("Zone")[1]);           // Index 1 out of bounds for length 1
 
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+        String s = "All Items, About, Logout, ";
+        s = s.substring(0, s.length()-2);
+        System.out.println(s);
+
+        // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+        String priceStr = "$45.35";
+        String clean = priceStr.replace("$", "");
+        double price = Double.parseDouble(clean);
+
+        System.out.println(price + 10);
+        System.out.println(priceStr + 10);
     }
 
 }
