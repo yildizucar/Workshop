@@ -125,6 +125,24 @@ public class SauceStepDefs extends CoreObjects {
     }
 
 
+
+
+//     @Then("verify {int} product are listed on Products Page")
+//     public void verifyProductAreListedOnProductsPage(int count ) {       // parametreye count dedik . Urunlein sayisi gelecek cunku
+//         assertEquals(count ,pages.productsPage().getCountOfPruducts());  // verify dedigi icin once iki degeri karsilastirma var  actual ve expectedt
+//                                                                          //Expected furuden gelen deger (6) ama count olarak parametre yaxdik
+
+//     }
+//     @And("verify that sort dropdown has this options")
+//     public void verifyThatSortDropdownHasThisOptions(List<String>options ) { // 12-15 arasi data table var .stepdef create yapilinca 1. oncelik parametrelere isim vermek lazim -->(List<String>options )
+//      pages.productsPage().verifySortDropDownOptions(options);              //assert ile yapilabilir yukardaki gibi farkli bir yontem deneyelim dedik2
+//                                                                           //burada benim methodum -verifySortDropDownOptions- Dropdown da yazili olanlara bakacak ve Options parametresi ile karsilastiracak
+//     //assertEquals(count ,pages.productsPage().getCountOfPruducts());    // buna benzerde yapabiliriz dedi aslinda ama farkli bir yol denedik
+
+//    //Bazi firmalar 134 line bazilari 132 line gibi isteyebiliyor
+//     }
+
+
     // ~~~~~~~~~~~~~~~~~~ DAY 3 ~~~~~~~~~~~~~~~~~~~~~~
 
     @Then("verify {int} product are listed on Products Page")
@@ -181,7 +199,7 @@ public class SauceStepDefs extends CoreObjects {
         assertEquals(expected, pages.shoppingCartPage().getItemsFromShoppingCart());
     }
 
-    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
     @And("clicks on {string} button 2")
     public void clicksOnButton2(String button) {
         switch (button.toLowerCase()) {
@@ -239,4 +257,5 @@ public class SauceStepDefs extends CoreObjects {
         // assertEquals(customer.getFirstName(), driver.findElement(By.id("")).getText());
 
     }
+
 }

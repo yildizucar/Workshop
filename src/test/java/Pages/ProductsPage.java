@@ -12,7 +12,6 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -73,6 +72,30 @@ public class ProductsPage extends BasePage {
         return Integer.parseInt(count);
     }
 
+// <<<<<<< yildiz
+//     public int getCountOfPruducts() {
+// //        List<WebElement> product = driver.findElements(By.cssSelector("inventory_item"));
+// //        return product.size();
+//         return driver.findElements(By.cssSelector(".inventory_item")).size(); //.inventory_item_name bu zpathde kullanabilir 6 tane gosteriyor
+//     }
+
+//     public void verifySortDropDownOptions(List<String> options) {
+//         // dropdown konusunu handle yapan class - DropDown menulerini hangi sekillerde kac degisik yoldan secebilirsin
+//         //select class ile -visible .option.
+
+//         WebElement dropdown = driver.findElement(By.xpath("//select[@class ='product_sort_container'] "));
+//         Select select = new Select(dropdown);
+//         List<WebElement> content = select.getOptions();  //iki seyi karsilastirmam lazim . DropDowndakileri bulmam lazim  ve bunu Feature Fileden gelen  Stingden olusan listim ile karsilastirmam lazim
+//         List<String> text = new ArrayList<>();            // 2 Ayni dataType karsilastirmam lazim. Bana Featuredan List string gelmis.Su an elimizde WebElementleden olusan bir liste var
+//         for (WebElement each : content) {               //Burada da ListOf Stringe cevirmem gerekli
+//             text.add(each.getText());                    //applicarindaki nametto z falan yazan yerdeki isimleri alamam gererkli,Bunlari alip Featiredeki liste ile karsilastirabileyim
+
+//         }                                               //WebElelmntelrden olusan bir list var bunlarin gettext lerini almam lazim
+//         assertEquals(options, text);                    //Text listini, contentden Textleri alip text dizisine atmam lazim
+//     }                                                    //soru contenteki web elemnetlerdeki textleri alip nasil text e ekleyebilirim
+//                                                    //Amac =text listine  her bir Webelementin getText ile textini  aliyor ve 84 deki textimize ekliyri
+// }
+// =======
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~ DAY 3 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     public int getCountOfProducts() {
@@ -144,6 +167,7 @@ public class ProductsPage extends BasePage {
         List<WebElement> menu = driver.findElements(subMenus);
         return getTextFromElements(menu);
     }
+
 
 
     public void openHamburgerMenu() {
