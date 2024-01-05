@@ -22,7 +22,7 @@ public class ProductsPage extends BasePage {
     private static final By shoppingCart = By.xpath("//a[@class='shopping_cart_link']");
     private static final By sortProductsDropdown = By.className("product_sort_container");
     private static final By productNames = By.cssSelector(".inventory_item_name");
-    private static final By subMenus = By.cssSelector(".menu-item");
+    private static final By subMenus = By.cssSelector(".menu-item");  //aslinda burada class="bm-item menu-item" NOT :.Class kullan ama burada item menu arasinda bosluk var oyuzden bi kismi aldik
     private static final String addToCartButtonTemplate = "//div[text()='%s']/../../following-sibling::div/button";
 
 
@@ -131,7 +131,7 @@ public class ProductsPage extends BasePage {
         assertEquals(options, text);
     }
 
-    // or (short way)
+          /** or (short way)*/
 
     public void verifySortDropdownOptions(List<String> content) {
         WebElement dropdown = driver.findElement(sortProductsDropdown);
@@ -157,8 +157,8 @@ public class ProductsPage extends BasePage {
 
 //    public List<String> getHamburgerMenu() {
 //        wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(subMenus)));
-//        List<WebElement> menu = driver.findElements(subMenus);
-//        List<String> subMenus = menu.stream().map(WebElement::getText).collect(Collectors.toList());
+//        List<WebElement> menu = driver.findElements(subMenus); /// BURADAKI ELEMNETELRI GET TEXT ILE ALIYOR
+//        List<String> subMenus = menu.stream().map(WebElement::getText).collect(Collectors.toList());   //YUKARDA ALDIGI TEXTLERI subMenus ile yeni bir liste yapiyor
 //        return subMenus;
 //    }
 
