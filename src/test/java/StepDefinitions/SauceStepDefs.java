@@ -221,6 +221,10 @@ public class SauceStepDefs extends CoreObjects {
     public void clicksOnButton(String buttonName) {
         pages.shoppingCartPage().clickOnButton(buttonName);
     }
+    //bu alttaki  shoppingcartpage de hepsi click ve locator ayni hepsi ID var  bu ylla cozulebilir 220-227 ile
+    //public void clickOnButton(String button) {
+    //        wait.until(ExpectedConditions.elementToBeClickable(By.id(button.toLowerCase()))).click();//burada paramatirze yaptik
+    //    }
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

@@ -28,7 +28,7 @@ public class D05_StringManipulations {
 
         // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-        String s = "All Items, About, Logout, ";
+        String s = "All Items, About, Logout, "; //Day 4de gosteridi
         s = s.substring(0, s.length()-2);
         System.out.println(s);
 

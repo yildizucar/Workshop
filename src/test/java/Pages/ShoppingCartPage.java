@@ -39,7 +39,7 @@ public class ShoppingCartPage extends BasePage {
     }
 
     public void clickOnButton(String button) {
-        wait.until(ExpectedConditions.elementToBeClickable(By.id(button.toLowerCase()))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(By.id(button.toLowerCase()))).click();//burada paramatirze yaptik
     }
 
     public void fillCustomerInformation(DataTable dataTable) {
@@ -48,7 +48,11 @@ public class ShoppingCartPage extends BasePage {
         String lastName = info.get("lastName");
         String zipCode = info.get("zipCode");
 
-        if (firstName.contentEquals("random")) {
+        // driver.findElement(firstNameField).sendKeys(firstName);
+        // driver.findElement(lastNameField).sendKeys(lastName);
+        // driver.findElement(zipCodeField).sendKeys(zipCode);
+
+        if (firstName.contentEquals("random")) {//eger orda random goruyorsan sunu yap dememiz lazim o yuzden faker yaptik
             firstName = faker.name().firstName();
         }
         if (lastName.contentEquals("random")) {
@@ -59,9 +63,7 @@ public class ShoppingCartPage extends BasePage {
         }
 
         fillCustomerInformation(firstName, lastName, zipCode);
-        // driver.findElement(firstNameField).sendKeys(firstName);
-        // driver.findElement(lastNameField).sendKeys(lastName);
-        // driver.findElement(zipCodeField).sendKeys(zipCode);
+
     }
 
     public void fillCustomerInformation(String firstName, String lastName, String zipCode) {

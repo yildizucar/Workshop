@@ -209,16 +209,16 @@ public class ProductsPage extends BasePage {
         switch (option) {
             case "name":
                 List<WebElement> itemNames = driver.findElements(By.className("inventory_item_name"));
-                List<String> names = new LinkedList<>();
+                List<String> names = new LinkedList<>(); //linked list yaziyoruz cunku surasi onemli ise byaariz
                 for (WebElement each : itemNames) {
                     names.add(each.getText());
                 }
-                assertTrue(isListSorted(names));
+                assertTrue(isListSorted(names)); //method icinde method create yaptim  assertTrue(isListSorted  ==>
                 break;
             case "price":
                 List<WebElement> itemPrice = driver.findElements(By.className("inventory_item_price"));
                 List<Double> prices = new LinkedList<>();
-                for (WebElement each : itemPrice) {            //$5.67
+                for (WebElement each : itemPrice) {            //$5.67 , fiyatlar boyle yaziyir. stringe cevirecegiz 5.17 sonra stringi double cevierecgix
                     prices.add(Double.parseDouble(each.getText().replace("$", "")));
                 }
                 assertTrue(isSorted(prices));
@@ -227,10 +227,10 @@ public class ProductsPage extends BasePage {
 
     }
 
-    private static boolean isListSorted(List<String> list) {
-        List<String> copy = new LinkedList<>(list);
-        Collections.sort(copy);
-        return list.equals(copy);
+    private static boolean isListSorted(List<String> list) {  // alttaki method ile overloading oldu ayni method farkli parametre
+        List<String> copy = new LinkedList<>(list); //LIST PARANTEZ ICINE YAZINCA 2 .BIR LISTI KOPYALAR
+        Collections.sort(copy);  //LISTEM SORTED ISE HIC BIR DEGISIKLIK OLMAZ. ZATEN SIRALI ISE BIR DAHA DEGISMEZ
+        return list.equals(copy);  //list.equals(copy) ILE IKI LISTENIN SIRALI OLUP OLMADIGINI KONTROL EDIYORUZ
     }
 
     private static boolean isSorted(List<Double> list) {
