@@ -336,3 +336,24 @@ BU YONTEM ILE BASLIKLARI KONTROL EDECEKSEK BU KULLANILABILIR. WEBELEMNTI BUL
  ```java 
 //        List<WebElement> menu = driver.findElements(subMenus); /// BURADAKI ELEMNETELRI GET TEXT ILE ALIYOR
 //        List<String> subMenus = menu.stream().map(WebElement::getText).collect(Collectors.toList());   //YUKARDA ALDIGI TEXTLERI subMenus ile yeni bir liste yapiyor
+  
+YANI BU SEKILDE
+
+
+    /** OR   ALTTAKI GIBIDE YAZABILIRIZ =SELECT CLASS YOK. TABLODAKI HEADRLERI KONTROL ETMEK ISTIYORSUN MESELA ALLTAKI GIBI YAZAILABILRI */
+
+
+//    public List<String> getHamburgerMenu() {
+//        List<WebElement> menu = driver.findElements(subMenus);
+//        return menu.stream().map(WebElement::getText).collect(Collectors.toList());
+//
+//    }
+
+ ``` 
+   ## DROPDOWNDAN BIR SEY SECME-  SIRALAMA ISME GORE 
+
+                Scenario: Validate sort options
+                When user sort the items by "Name (A to Z)"
+                Then verify that items are sorted by "name"
+                When user sort the items by "Price (low to high)"
+                And verify that items are sorted by "price"

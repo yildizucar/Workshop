@@ -162,6 +162,16 @@ public class ProductsPage extends BasePage {
 //        return subMenus;
 //    }
 
+    /** OR   ALTTAKI GIBIDE YAZABILIRIZ =SELECT CLASS YOK. TABLODAKI HEADRLERI KONTROL ETMEK ISTIYORSUN MESELA ALLTAKI GIBI YAZAILABILRI */
+
+
+//    public List<String> getHamburgerMenu() {
+//        List<WebElement> menu = driver.findElements(subMenus);
+//        return menu.stream().map(WebElement::getText).collect(Collectors.toList());
+//
+//    }
+
+
     public List<String> getHamburgerMenu() {
         wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(subMenus)));
         List<WebElement> menu = driver.findElements(subMenus);

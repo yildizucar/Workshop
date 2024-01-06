@@ -167,7 +167,7 @@ public class SauceStepDefs extends CoreObjects {
 
     @When("user sort the items by {string}")
     public void userSortTheItemsBy(String option) {
-        pages.productsPage().sortProducts(option);
+        pages.productsPage().sortProducts(option);  // ferureda ne yaziyorsa ona gore sort yapacak bir method lazim
     }
 
 
